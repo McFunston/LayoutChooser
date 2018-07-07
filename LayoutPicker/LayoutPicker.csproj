@@ -42,6 +42,9 @@
     <ApplicationIcon>Presentation\Resources\Images\Application.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -51,7 +54,6 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WpfApplicationFramework, Version=3.2.0.450, Culture=neutral, PublicKeyToken=1d6a5af5fe952afb, processorArchitecture=MSIL">
       <HintPath>..\packages\waf.3.2.0\lib\net45\WpfApplicationFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Domain\LayoutChoices.cs" />
     <Compile Include="Domain\Class1.cs" />
     <Page Include="Presentation\Resources\ImageResources.xaml">
       <SubType>Designer</SubType>
@@ -77,6 +80,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Layout.cs" />
+    <Compile Include="Domain\SettingsHandler.cs" />
+    <Compile Include="Domain\Signature.cs" />
     <Compile Include="Presentation\Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
@@ -104,6 +110,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Settings\LayoutOptions.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Presentation\Converters\" />

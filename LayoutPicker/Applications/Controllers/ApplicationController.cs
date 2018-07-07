@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Composition;
 using LayoutPicker.Applications.ViewModels;
+using LayoutPicker.Domain;
 
 namespace LayoutPicker.Applications.Controllers
 {
@@ -7,7 +8,7 @@ namespace LayoutPicker.Applications.Controllers
     internal class ApplicationController
     {
         private readonly ShellViewModel shellViewModel;
-
+        public readonly SettingsHandler settingsHandler = new SettingsHandler();
 
         [ImportingConstructor]
         public ApplicationController(ShellViewModel shellViewModel)
@@ -23,6 +24,7 @@ namespace LayoutPicker.Applications.Controllers
 
         public void Run()
         {
+            settingsHandler.GetLayoutOptions();
             shellViewModel.Show();
         }
 
