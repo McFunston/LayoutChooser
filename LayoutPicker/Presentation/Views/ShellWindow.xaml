@@ -32,7 +32,7 @@
             </MenuItem>
         </Menu>
         
-        <StackPanel>
+        <StackPanel Background="#FFEFEFF1">
 
             <!--<ListBox Width="400" Margin="10" x:Name="MyListBox"
                      ItemsSource="{Binding Source={StaticResource LayoutChoicesTemplate}}"
@@ -40,7 +40,10 @@
 
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
-                    <TextBlock Width="80" Margin="10">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
+                <TextBlock Width="80" Margin="10">
                         Page Size
                     </TextBlock>
                     <ComboBox ItemsSource="{Binding Path=PageSizeValues}" VerticalAlignment="Center" Width="100">
@@ -49,6 +52,9 @@
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Binding
                 </TextBlock>
@@ -58,6 +64,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         UPs
                 </TextBlock>
@@ -67,6 +76,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Head to Head
                 </TextBlock>
@@ -76,6 +88,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Head Trim
                 </TextBlock>
@@ -85,6 +100,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Sheet Size
                 </TextBlock>
@@ -94,6 +112,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Caliper
                 </TextBlock>
@@ -103,6 +124,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Page Count
                 </TextBlock>
@@ -112,6 +136,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Press
                 </TextBlock>
@@ -121,6 +148,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Multiplier
                 </TextBlock>
@@ -130,12 +160,13 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+                <StackPanel.Effect>
+                    <DropShadowEffect Opacity="0.5"/>
+                </StackPanel.Effect>
                 <TextBlock Width="80" Margin="10">
                         Signature
                 </TextBlock>
-                <ComboBox ItemsSource="{Binding Path=SignatureValues}" VerticalAlignment="Center" Width="100">
-
-                </ComboBox>
+                <ComboBox ItemsSource="{Binding Path=SignatureValues}" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
 
             
