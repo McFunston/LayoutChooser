@@ -1,4 +1,17 @@
 {
+  "Values": [
+    "Page size",
+    "Binding",
+    "UPs",
+    "Head to Head",
+    "Head Trim",
+    "Sheet Size",
+    "Caliper",
+    "Page Count",
+    "Press",
+    "Multiplier",
+    "Signature"
+  ],
   "Page size": [
     "8.375x10.875",
     "7.875x10.750",

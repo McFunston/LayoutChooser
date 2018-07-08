@@ -9,10 +9,18 @@ using System.Threading.Tasks;
 namespace LayoutPicker.Domain
 {
 
-    class SettingsHandler
+    public sealed class SettingsHandler
     {
+        static readonly SettingsHandler _instance = new SettingsHandler();
+        public static SettingsHandler Instance
+        {
+            get
+            {
+                return _instance;
+            }
+        }
         public Dictionary<string, List<string>> LayoutOptions { get; set; }
-        public void GetLayoutOptions()
+        public void GetLayoutOptions() //Get the potential layout values from LayoutOptions.json
         {
             var layoutOptions = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions.json"));
             LayoutOptions = layoutOptions;            

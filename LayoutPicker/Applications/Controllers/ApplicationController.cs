@@ -9,14 +9,12 @@ namespace LayoutPicker.Applications.Controllers
     {
         private readonly ShellViewModel shellViewModel;
         public readonly SettingsHandler settingsHandler = new SettingsHandler();
-
+        public LayoutChoices layoutChoices = new LayoutChoices();
         [ImportingConstructor]
         public ApplicationController(ShellViewModel shellViewModel)
         {
             this.shellViewModel = shellViewModel;
         }
-
-
 
         public void Initialize()
         {
@@ -25,7 +23,9 @@ namespace LayoutPicker.Applications.Controllers
         public void Run()
         {
             settingsHandler.GetLayoutOptions();
+            layoutChoices.GetLayoutChoices(settingsHandler);
             shellViewModel.Show();
+            
         }
 
         public void Shutdown()
