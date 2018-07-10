@@ -36,6 +36,10 @@
                      ItemsSource="{Binding Path=Layout}"
                      ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>
 
+            <Button Command="{Binding AddSig}">
+                Add Signatures
+            </Button>
+
             <Button>
                 Get Layout
             </Button>

@@ -55,7 +55,11 @@ namespace LayoutPicker.Applications.ViewModels
 
         public ICommand ExitCommand { get { return exitCommand; } }
         
-
+        public void AddSig()
+        {            
+            Layout.Add(Layout[Layout.Count - 2]);
+            Layout.Add(Layout[Layout.Count - 2]);
+        }
         public void Show()
         {
             ViewCore.Show();
