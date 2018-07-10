@@ -27,9 +27,18 @@
             <Image x:Name="Logo" Source="/LayoutPicker;component/Presentation/Resources/Images/logo.png" Width="200" Margin="10,20,10,10" >
                 
             </Image>
+            <StackPanel Margin="10, 0, 10, 0" Orientation="Horizontal">
+                <TextBlock Text="Docket #" VerticalAlignment="Center" Width="80" Margin="20,0,10,0"/>
+                <TextBox Width="100"/>
+            </StackPanel>
+            
             <ListView Margin="10" x:Name="MyListBox" 
                      ItemsSource="{Binding Path=Layout}"
                      ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>
+
+            <Button>
+                Get Layout
+            </Button>
 
 
             <!--<StackPanel Orientation="Horizontal" ">
