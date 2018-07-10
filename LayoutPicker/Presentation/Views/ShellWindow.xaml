@@ -4,23 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
         xmlns:vm="clr-namespace:LayoutPicker.Applications.ViewModels"
-        mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" Width="250" Height="750"
+        mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" Width="275" Height="750"
         d:DataContext="{d:DesignInstance vm:ShellViewModel}">
 
     <Window.Resources>
         <DataTemplate x:Key="LayoutChoicesTemplate">
-            <StackPanel>                
-                <TextBlock Text="{Binding Path=PageSizeValues}" />
-                <ComboBox  ItemsSource="{Binding Path=BindingTypeValues}"/>
-                <TextBlock Text="{Binding Path=UpsValues}"/>
-                <TextBlock Text="{Binding Path=HeadToHeadValues}"/>
-                <TextBlock Text="{Binding Path=HeadTrimValues}"/>
-                <TextBlock Text="{Binding Path=SheetSizeValues}"/>
-                <TextBlock Text="{Binding Path=CaliperValues}"/>
-                <TextBlock Text="{Binding Path=PageCountValues}"/>
-                <TextBlock Text="{Binding Path=PressValues}"/>
-                <TextBlock Text="{Binding Path=MultiplierValues}"/>
-                <TextBlock Text="{Binding Path=SignatureValues}"/>
+            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0" Background="AliceBlue">
+                <TextBlock Text="{Binding Path=Name}" Width="80" Margin="10" />
+                <ComboBox  ItemsSource="{Binding Path=PossibleValues}" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -36,12 +27,12 @@
             <Image x:Name="Logo" Source="/LayoutPicker;component/Presentation/Resources/Images/logo.png" Width="200" Margin="10,20,10,10" >
                 
             </Image>
-            <!--<ListBox Width="400" Margin="10" x:Name="MyListBox"
-                     ItemsSource="{Binding Source={StaticResource LayoutChoicesTemplate}}"
-                     ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>-->
+            <ListView Margin="10" x:Name="MyListBox" 
+                     ItemsSource="{Binding Path=Layout}"
+                     ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>
 
 
-            <StackPanel Orientation="Horizontal" Margin="10" Background="AliceBlue">
+            <!--<StackPanel Orientation="Horizontal" ">
                 <StackPanel.Effect>
                     <DropShadowEffect Opacity="0.5"/>
                 </StackPanel.Effect>
@@ -169,7 +160,7 @@
                         Signature
                 </TextBlock>
                 <ComboBox ItemsSource="{Binding Path=SignatureValues}" VerticalAlignment="Center" Width="100"/>
-            </StackPanel>
+            </StackPanel>-->
 
             
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Waf.Applications;
 using System.Windows.Input;
@@ -24,11 +25,12 @@ namespace LayoutPicker.Applications.ViewModels
         public List<string> PressValues { get; set; }
         public List<string> MultiplierValues { get; set; }
         public List<string> SignatureValues { get; set; }
-
+        public ObservableCollection<LayoutItem> Layout { get; set; }
         [ImportingConstructor]
         public ShellViewModel(IShellView view)
             : base(view)
         {
+            //Layout = new List<LayoutItem>();
             settingsHandler.GetLayoutOptions();
             layoutChoices.GetLayoutChoices(settingsHandler);
             PageSizeValues = layoutChoices.PageSizeValues;
@@ -42,6 +44,8 @@ namespace LayoutPicker.Applications.ViewModels
             PressValues = layoutChoices.PressValues;
             MultiplierValues = layoutChoices.MultiplierValues;
             SignatureValues = layoutChoices.SignatureValues;
+            LayoutFactory layoutFactory = new LayoutFactory();
+            Layout = new ObservableCollection<LayoutItem>(layoutFactory.MakeLayout(settingsHandler));
             exitCommand = new DelegateCommand(Close);
             
         }
