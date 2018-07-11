@@ -142,6 +142,7 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Settings\LayoutOptions.json" />
+    <None Include="Settings\LayoutOptions2.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Presentation\Converters\" />
