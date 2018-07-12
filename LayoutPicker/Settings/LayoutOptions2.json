@@ -1,10 +1,6 @@
 {
-  "Products": [
-    "Text",
-    "Cover"
-  ],
   "Text": {
-    "Values": [
+    "Keys": [
       "Page size",
       "Binding",
       "UPs",
@@ -188,7 +184,7 @@
     ]
   },
   "Cover": {
-    "Values": [
+    "Keys": [
       "Final Trim Size",
       "Binding - #Up",
       "Spine Size",

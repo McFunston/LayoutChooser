@@ -20,10 +20,13 @@ namespace LayoutPicker.Domain
             }
         }
         public Dictionary<string, List<string>> LayoutOptions { get; set; }
+        public Dictionary<string, Dictionary<string, List<string>>> LayoutOptions2 { get; set; }
+
         public void GetLayoutOptions() //Get the potential layout values from LayoutOptions.json
         {
             var layoutOptions = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions.json"));
-            LayoutOptions = layoutOptions;            
+            LayoutOptions = layoutOptions;
+            LayoutOptions2 = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions2.json"));
         }
 
     }
