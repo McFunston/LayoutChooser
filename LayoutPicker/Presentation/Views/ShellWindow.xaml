@@ -29,7 +29,7 @@
             </Image>
             <StackPanel Margin="10, 0, 10, 0" Orientation="Horizontal">
                 <TextBlock Text="Docket #" VerticalAlignment="Center" MinWidth="80" Margin="20,0,10,0"/>
-                <TextBox MinWidth="100"/>
+                <TextBox MinWidth="100" Text="{Binding Path=JobNumber}"/>
             </StackPanel>
             <StackPanel Margin="10, 10, 10, 0" Orientation="Horizontal">
                 <TextBlock Text="Product Part" VerticalAlignment="Center" MinWidth="80" Margin="20,0,10,0"/>
@@ -49,7 +49,7 @@
                 <TextBlock Text="Layout to retrieve" Margin="0,0,10,0"/>
                 <TextBlock Name="LayoutString" Text="{Binding LayoutString, Mode=TwoWay}"/>
             </StackPanel>
-            <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
                 <TextBlock Text="File Name" Margin="0,0,10,0"/>
                 <TextBlock Name="FileName" Text="{Binding FileName, Mode=TwoWay}"/>
             </StackPanel>

@@ -49,16 +49,6 @@ namespace LayoutPicker.Applications.ViewModels
             set { jobNumber = value; RaisePropertyChanged(); }
         }
 
-
-        private int myVar;
-
-        public int MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
-
         private Layout observableLayout;
 
         public Layout ObservableLayout
@@ -99,7 +89,7 @@ namespace LayoutPicker.Applications.ViewModels
             {
                 LayoutString = LayoutString + sv.CurrentValue;
             }
-            FileName = ProductPartName;
+            FileName = JobNumber + "-" + ProductPartName;
             //LayoutString = "Got One";
         }
 
