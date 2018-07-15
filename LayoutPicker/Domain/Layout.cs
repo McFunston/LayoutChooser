@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LayoutPicker.Domain;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +10,35 @@ namespace LayoutPicker.Models
 {
     class Layout
     {
-        public string PageSize { get; set; }
-        public string BindingType { get; set; }
-        public string Ups { get; set; }
-        public string HeadToHead { get; set; }
-        public string HeadTrim { get; set; }
-        public string SheetSize { get; set; }
-        public string Caliper { get; set; }
-        public string PageCount { get; set; }
-        public string Press { get; set; }
-        public List<Signature> Signatures { get; set; }
+        private string productPartName = "Text";
+        private List<LayoutItem> layoutItems;
+        public string ProductPartName
+        {
+            get { return productPartName; }
+            set { productPartName = value; }
+        }
+
+        public List<LayoutItem> LayoutItems
+        {
+            get { return layoutItems; }
+            set { layoutItems = value; }
+        }
+
+        public Layout()
+        {
+            ProductPartName = "Text";
+            SettingsHandler settingsHandler = new SettingsHandler();
+            LayoutFactory layoutFactory = new LayoutFactory();
+            LayoutItems = layoutFactory.GetLayout(settingsHandler, productPartName);
+        }
+
+        public Layout GetUpdatedLayout()
+        {
+            SettingsHandler settingsHandler = new SettingsHandler();
+            LayoutFactory layoutFactory = new LayoutFactory();
+            LayoutItems = layoutFactory.GetLayout(settingsHandler, productPartName);
+            return this;
+        }
+
     }
 }

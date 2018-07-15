@@ -9,24 +9,34 @@ using System.Threading.Tasks;
 namespace LayoutPicker.Domain
 {
 
-    public sealed class SettingsHandler
+    public class SettingsHandler
     {
-        static readonly SettingsHandler _instance = new SettingsHandler();
-        public static SettingsHandler Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
+        //static readonly SettingsHandler _instance = new SettingsHandler();
+        //public static SettingsHandler Instance
+        //{
+        //    get
+        //    {
+        //        return _instance;
+        //    }
+        //}
         public Dictionary<string, List<string>> LayoutOptions { get; set; }
         public Dictionary<string, Dictionary<string, List<string>>> LayoutOptions2 { get; set; }
 
+        public List<String> GetProductPartList()
+        {
+            List<string> productPartList = new List<string>();
+            productPartList = LayoutOptions2.Keys.ToList<string>();
+            return productPartList;
+        }
         public void GetLayoutOptions() //Get the potential layout values from LayoutOptions.json
         {
-            var layoutOptions = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions.json"));
-            LayoutOptions = layoutOptions;
-            LayoutOptions2 = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions2.json"));
+            //var layoutOptions = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions.json"));
+            //LayoutOptions = layoutOptions;
+            if (LayoutOptions2 == null)
+            {
+                LayoutOptions2 = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions2.json"));
+            }
+            
         }
 
     }

@@ -11,7 +11,7 @@
         <DataTemplate x:Key="LayoutChoicesTemplate">
             <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0" Background="AliceBlue">
                 <TextBlock Text="{Binding Path=Name}" Width="80" Margin="10" />
-                <ComboBox  ItemsSource="{Binding Path=PossibleValues}" VerticalAlignment="Center" Width="100"/>
+                <ComboBox  ItemsSource="{Binding Path=PossibleValues, Mode=TwoWay}" VerticalAlignment="Center" Width="100"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -31,14 +31,14 @@
                 <TextBlock Text="Docket #" VerticalAlignment="Center" Width="80" Margin="20,0,10,0"/>
                 <TextBox Width="100"/>
             </StackPanel>
+            <StackPanel Margin="10, 10, 10, 0" Orientation="Horizontal">
+                <TextBlock Text="Product Part" VerticalAlignment="Center" Width="80" Margin="20,0,10,0"/>
+                <ComboBox ItemsSource="{Binding Path=ProductParts}" SelectedValue="{Binding Path=ProductPartName, Mode=TwoWay}" Width="100"/>
+            </StackPanel>
             
             <ListView Margin="10" x:Name="MyListBox" 
-                     ItemsSource="{Binding Path=Layout}"
+                     ItemsSource="{Binding Path=ObservableLayout.LayoutItems, Mode=TwoWay}"
                      ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>
-
-            <Button Command="{Binding AddSig}">
-                Add Signatures
-            </Button>
 
             <Button>
                 Get Layout

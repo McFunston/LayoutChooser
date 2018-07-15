@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Waf.Applications;
 using System.Windows.Input;
 using LayoutPicker.Applications.Views;
 using LayoutPicker.Domain;
+using LayoutPicker.Models;
 
 namespace LayoutPicker.Applications.ViewModels
 {
@@ -13,27 +15,57 @@ namespace LayoutPicker.Applications.ViewModels
     {
         private readonly DelegateCommand exitCommand;
         public readonly SettingsHandler settingsHandler = new SettingsHandler();
-        public ObservableCollection<LayoutItem> Layout { get; set; }
+        public List<string> ProductParts { get; set; }
+
+        private string productPartName;
+
+        public string ProductPartName
+        {
+            get { return productPartName; }
+            set { productPartName = value; ObservableLayout.ProductPartName = value; UpdateLayout(); RaisePropertyChanged("ProductPartName"); }
+        }
+
+        
+        private int myVar;
+
+        public int MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
+
+
+        private Layout observableLayout;
+
+        public Layout ObservableLayout
+            {
+            get { return observableLayout; }
+            set
+            {
+                observableLayout = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public void UpdateLayout()
+        {
+            ObservableLayout = ObservableLayout.GetUpdatedLayout();
+        }
+
         [ImportingConstructor]
         public ShellViewModel(IShellView view)
             : base(view)
         {
-            settingsHandler.GetLayoutOptions();            
+            ObservableLayout = new Layout();
+            settingsHandler.GetLayoutOptions();
+            ProductParts = settingsHandler.GetProductPartList();
             LayoutFactory layoutFactory = new LayoutFactory();
-            Layout = new ObservableCollection<LayoutItem>(layoutFactory.MakeLayout(settingsHandler));
+            ProductPartName = ObservableLayout.ProductPartName;
             exitCommand = new DelegateCommand(Close);            
         }
-
-
-        public string Title { get { return ApplicationInfo.ProductName; } }
-
-        public ICommand ExitCommand { get { return exitCommand; } }
         
-        public void AddSig()
-        {            
-            Layout.Add(Layout[Layout.Count - 2]);
-            Layout.Add(Layout[Layout.Count - 2]);
-        }
+        public string Title { get { return ApplicationInfo.ProductName; } }
+        public ICommand ExitCommand { get { return exitCommand; } }
         public void Show()
         {
             ViewCore.Show();
@@ -43,5 +75,17 @@ namespace LayoutPicker.Applications.ViewModels
         {
             ViewCore.Close();
         }
+
+        //protected void ProductPartChanged(PropertyChangedEventArgs e)
+        //{
+
+        //    if (e.PropertyName == "ProductPartName")
+        //    {
+        //        ObservableLayout.UpdateLayout();
+        //        var r = "r";
+        //        //RaisePropertyChanged("ProductPartName");
+        //    }
+        //}
+
     }
 }
