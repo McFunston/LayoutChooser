@@ -26,6 +26,14 @@ namespace LayoutPicker.Applications.ViewModels
             set { layoutString = value; RaisePropertyChanged(); }
         }
 
+        private string fileName;
+
+        public string FileName
+        {
+            get { return fileName; }
+            set { fileName = value; RaisePropertyChanged(); }
+        }
+
 
         public string ProductPartName
         {
@@ -33,7 +41,15 @@ namespace LayoutPicker.Applications.ViewModels
             set { productPartName = value; ObservableLayout.ProductPartName = value; UpdateLayout(); RaisePropertyChanged("ProductPartName"); }
         }
 
-        
+        private string jobNumber;
+
+        public string JobNumber
+        {
+            get { return jobNumber; }
+            set { jobNumber = value; RaisePropertyChanged(); }
+        }
+
+
         private int myVar;
 
         public int MyProperty
@@ -83,6 +99,7 @@ namespace LayoutPicker.Applications.ViewModels
             {
                 LayoutString = LayoutString + sv.CurrentValue;
             }
+            FileName = ProductPartName;
             //LayoutString = "Got One";
         }
 
