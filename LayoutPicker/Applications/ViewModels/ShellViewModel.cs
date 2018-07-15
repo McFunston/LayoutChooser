@@ -14,10 +14,18 @@ namespace LayoutPicker.Applications.ViewModels
     internal class ShellViewModel : ViewModel<IShellView>
     {
         private readonly DelegateCommand exitCommand;
+        private readonly DelegateCommand getLayoutCommand;
         public readonly SettingsHandler settingsHandler = new SettingsHandler();
         public List<string> ProductParts { get; set; }
-
         private string productPartName;
+        private string layoutString;
+
+        public string LayoutString
+        {
+            get { return layoutString; }
+            set { layoutString = value; RaisePropertyChanged(); }
+        }
+
 
         public string ProductPartName
         {
@@ -61,11 +69,23 @@ namespace LayoutPicker.Applications.ViewModels
             ProductParts = settingsHandler.GetProductPartList();
             LayoutFactory layoutFactory = new LayoutFactory();
             ProductPartName = ObservableLayout.ProductPartName;
-            exitCommand = new DelegateCommand(Close);            
+            exitCommand = new DelegateCommand(Close);
+            getLayoutCommand = new DelegateCommand(GetLayout);
         }
         
         public string Title { get { return ApplicationInfo.ProductName; } }
         public ICommand ExitCommand { get { return exitCommand; } }
+        public ICommand GetLayoutCommand { get { return getLayoutCommand; } }
+
+        public void GetLayout()
+        {
+            foreach (var sv in ObservableLayout.LayoutItems)
+            {
+                LayoutString = LayoutString + sv.CurrentValue;
+            }
+            //LayoutString = "Got One";
+        }
+
         public void Show()
         {
             ViewCore.Show();
