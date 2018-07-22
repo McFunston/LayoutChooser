@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
         xmlns:vm="clr-namespace:LayoutPicker.Applications.ViewModels"
-        mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" Width="275" Height="750"
+        mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" Width="350" MinHeight="850"
         d:DataContext="{d:DesignInstance vm:ShellViewModel}">
 
     <Window.Resources>
         <DataTemplate x:Key="LayoutChoicesTemplate">
             <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0" Background="AliceBlue" MinWidth="210">
-                <TextBlock Text="{Binding Path=Name}" MinWidth="80" Margin="10" />
+                <TextBlock Text="{Binding Path=Name}" MinWidth="120" Margin="10" />
                 <ComboBox  ItemsSource="{Binding Path=PossibleValues, Mode=TwoWay}" SelectedItem="{Binding Path=CurrentValue, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100"/>
             </StackPanel>
         </DataTemplate>
@@ -22,7 +22,7 @@
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
             </MenuItem>
         </Menu>-->
-        
+        <Grid>
         <StackPanel Background="#FFEFEFF1">
             <Image x:Name="Logo" Source="/LayoutPicker;component/Presentation/Resources/Images/logo.png" Width="200" Margin="10,20,10,10" >
                 
@@ -36,12 +36,16 @@
                 <ComboBox ItemsSource="{Binding Path=ProductParts}" SelectedValue="{Binding Path=ProductPartName, Mode=TwoWay}" MinWidth="100"/>
             </StackPanel>
             <StackPanel>
-                <ListView Margin="10" x:Name="MyListBox" 
+                <ListView Margin="10" x:Name="MyListBox"
+                          MaxHeight="550"                          
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                      ItemsSource="{Binding Path=ObservableLayout.LayoutItems, Mode=TwoWay}"
                      ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>
             </StackPanel>
 
-
+            <Button Command="{Binding Path=GetOptionalsCommand}">
+                Add optional layout items
+            </Button>
             <Button Command="{Binding Path=GetLayoutCommand}">
                 Get Layout
             </Button>
@@ -53,9 +57,7 @@
                 <TextBlock Text="File Name" Margin="0,0,10,0"/>
                 <TextBlock Name="FileName" Text="{Binding FileName, Mode=TwoWay}"/>
             </StackPanel>
-            
-
-
         </StackPanel>
+        </Grid>
     </DockPanel>
 </Window>

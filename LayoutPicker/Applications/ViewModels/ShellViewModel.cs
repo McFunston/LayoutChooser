@@ -15,6 +15,8 @@ namespace LayoutPicker.Applications.ViewModels
     {
         private readonly DelegateCommand exitCommand;
         private readonly DelegateCommand getLayoutCommand;
+        private readonly DelegateCommand getOptionalsCommand;
+
         public readonly SettingsHandler settingsHandler = new SettingsHandler();
         public List<string> ProductParts { get; set; }
         private string productPartName;
@@ -37,7 +39,7 @@ namespace LayoutPicker.Applications.ViewModels
 
         public string ProductPartName
         {
-            get { return productPartName; }
+            get { return ObservableLayout.ProductPartName; }
             set { productPartName = value; ObservableLayout.ProductPartName = value; UpdateLayout(); RaisePropertyChanged("ProductPartName"); }
         }
 
@@ -57,13 +59,23 @@ namespace LayoutPicker.Applications.ViewModels
             set
             {
                 observableLayout = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("ObservableLayout");
             }
         }
 
         public void UpdateLayout()
         {
             ObservableLayout = ObservableLayout.GetUpdatedLayout();
+        }
+
+        public void GetOptionals()
+        {
+            Layout tempOl = new Layout();
+            tempOl.LayoutItems.Clear();
+            tempOl.LayoutItems.AddRange(ObservableLayout.LayoutItems);
+            tempOl.ProductPartName = ObservableLayout.ProductPartName;
+            var ol = tempOl.AddOptionals(ObservableLayout.LayoutItems);
+            ObservableLayout = ol;
         }
 
         [ImportingConstructor]
@@ -77,12 +89,13 @@ namespace LayoutPicker.Applications.ViewModels
             ProductPartName = ObservableLayout.ProductPartName;
             exitCommand = new DelegateCommand(Close);
             getLayoutCommand = new DelegateCommand(GetLayout);
+            getOptionalsCommand = new DelegateCommand(GetOptionals);            
         }
         
         public string Title { get { return ApplicationInfo.ProductName; } }
         public ICommand ExitCommand { get { return exitCommand; } }
         public ICommand GetLayoutCommand { get { return getLayoutCommand; } }
-
+        public ICommand GetOptionalsCommand { get { return getOptionalsCommand; } }
         public void GetLayout()
         {
             foreach (var sv in ObservableLayout.LayoutItems)
@@ -91,7 +104,10 @@ namespace LayoutPicker.Applications.ViewModels
             }
             FileName = JobNumber + "-" + ProductPartName;
             //LayoutString = "Got One";
+            
         }
+
+
 
         public void Show()
         {

@@ -13,6 +13,10 @@
       "Multiplier",
       "Signature"
     ],
+    "Optional Keys": [
+      "Multiplier",
+      "Signature"
+    ],
     "Page size": [
       "8.375x10.875",
       "7.875x10.750",
@@ -194,6 +198,9 @@
       "# of Colour Bar",
       "Sheet Work",
       "Sheet Size With Grain"
+    ],
+    "Optional Keys": [
+
     ],
     "Final Trim Size": [
       "8.375x10.875",

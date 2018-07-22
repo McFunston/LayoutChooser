@@ -30,13 +30,10 @@ namespace LayoutPicker.Domain
         }
         public void GetLayoutOptions() //Get the potential layout values from LayoutOptions.json
         {
-
             if (LayoutOptions == null)
             {
                 LayoutOptions = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions.json"));
-            }
-            
+            }            
         }
-
     }
 }

@@ -39,6 +39,13 @@ namespace LayoutPicker.Models
             LayoutItems = layoutFactory.GetLayout(settingsHandler, productPartName);
             return this;
         }
+        public Layout AddOptionals(List<LayoutItem> layoutItems)
+        {
+            SettingsHandler settingsHandler = new SettingsHandler();
+            LayoutFactory layoutFactory = new LayoutFactory();
+            LayoutItems.AddRange(layoutFactory.GetOptionalItems(settingsHandler, ProductPartName));
+            return this;
+        }
 
     }
 }
