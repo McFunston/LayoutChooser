@@ -1,19 +1,25 @@
-﻿<Window x:Class="LayoutPicker.Presentation.Views.ShellWindow"
+﻿<Controls:MetroWindow x:Class="LayoutPicker.Presentation.Views.ShellWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:vm="clr-namespace:LayoutPicker.Applications.ViewModels"
         mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" Width="350" MinHeight="850"
         d:DataContext="{d:DesignInstance vm:ShellViewModel}">
 
     <Window.Resources>
         <DataTemplate x:Key="LayoutChoicesTemplate">
-            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0" Background="AliceBlue" MinWidth="210">
-                <TextBlock Text="{Binding Path=Name}" MinWidth="120" Margin="10" />
-                <ComboBox  ItemsSource="{Binding Path=PossibleValues, Mode=TwoWay}" SelectedItem="{Binding Path=CurrentValue, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100"/>
-            </StackPanel>
+            
+                <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0" Background="AliceBlue" MinWidth="210" Focusable="False">
+
+                    <TextBlock Text="{Binding Path=Name}" MinWidth="120" Margin="10" />
+                    <ComboBox  ItemsSource="{Binding Path=PossibleValues, Mode=TwoWay}" SelectedItem="{Binding Path=CurrentValue, Mode=TwoWay}" VerticalAlignment="Center" MinWidth="100"/>
+                </StackPanel>
+
+            
         </DataTemplate>
+        
     </Window.Resources>
 
         <DockPanel>
@@ -36,11 +42,13 @@
                 <ComboBox ItemsSource="{Binding Path=ProductParts}" SelectedValue="{Binding Path=ProductPartName, Mode=TwoWay}" MinWidth="100"/>
             </StackPanel>
             <StackPanel>
-                <ListView Margin="10" x:Name="MyListBox"
+                    <ListView Margin="10" x:Name="MyListBox"
                           MaxHeight="550"                          
                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                      ItemsSource="{Binding Path=ObservableLayout.LayoutItems, Mode=TwoWay}"
-                     ItemTemplate="{StaticResource LayoutChoicesTemplate}"/>
+                     ItemTemplate="{StaticResource LayoutChoicesTemplate}" Focusable="False">                        
+                        
+                    </ListView>
             </StackPanel>
 
             <Button Command="{Binding Path=GetOptionalsCommand}">
@@ -60,4 +68,4 @@
         </StackPanel>
         </Grid>
     </DockPanel>
-</Window>
+</Controls:MetroWindow>
