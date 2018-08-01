@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:vm="clr-namespace:LayoutPicker.Applications.ViewModels"
-        mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" Width="350" MinHeight="850"
+        mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" 
+                      MinHeight="850"
+                      WindowTransitionsEnabled="False"
+                      WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance vm:ShellViewModel}">
 
     <Window.Resources>
@@ -22,50 +25,61 @@
         
     </Window.Resources>
 
-        <DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" ClipToBounds="True">
+
+
+
+
+        <Controls:HamburgerMenu x:Name="HamburgerMenuControl"
+                        
+                        IsPaneOpen="False"
+                        DisplayMode="CompactInline" HorizontalAlignment="Left" ClipToBounds="True">
+            <StackPanel Background="#FFEFEFF1">
+                <Image x:Name="Logo" Source="/LayoutPicker;component/Presentation/Resources/Images/logo.png" Width="200" Margin="10,20,10,10" >
+
+                </Image>
+                <StackPanel Margin="10, 0, 10, 0" Orientation="Horizontal">
+                    <TextBlock Text="Docket #" VerticalAlignment="Center" MinWidth="80" Margin="20,0,10,0"/>
+                    <TextBox MinWidth="100" Text="{Binding Path=JobNumber}"/>
+                </StackPanel>
+                <StackPanel Margin="10, 10, 10, 0" Orientation="Horizontal">
+                    <TextBlock Text="Product Part" VerticalAlignment="Center" MinWidth="80" Margin="20,0,10,0"/>
+                    <ComboBox ItemsSource="{Binding Path=ProductParts}" SelectedValue="{Binding Path=ProductPartName, Mode=TwoWay}" MinWidth="100"/>
+                </StackPanel>
+                <StackPanel>
+                    <ListView Margin="10" x:Name="MyListBox"
+                          MaxHeight="550"                          
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     ItemsSource="{Binding Path=ObservableLayout.LayoutItems, Mode=TwoWay}"
+                     ItemTemplate="{StaticResource LayoutChoicesTemplate}" Focusable="False">
+
+                    </ListView>
+                </StackPanel>
+
+                <Button Command="{Binding Path=GetOptionalsCommand}" Style="{DynamicResource SquareButtonStyle}">
+                    Add optional layout items
+                </Button>
+                <Button Command="{Binding Path=GetLayoutCommand}">
+                    Get Layout
+                </Button>
+                <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
+                    <TextBlock Text="Layout to retrieve" Margin="0,0,10,0"/>
+                    <TextBlock Name="LayoutString" Text="{Binding LayoutString, Mode=TwoWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
+                    <TextBlock Text="File Name" Margin="0,0,10,0"/>
+                    <TextBlock Name="FileName" Text="{Binding FileName, Mode=TwoWay}"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Controls:HamburgerMenu>
         <!--<Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
             </MenuItem>
         </Menu>-->
-        <Grid>
-        <StackPanel Background="#FFEFEFF1">
-            <Image x:Name="Logo" Source="/LayoutPicker;component/Presentation/Resources/Images/logo.png" Width="200" Margin="10,20,10,10" >
-                
-            </Image>
-            <StackPanel Margin="10, 0, 10, 0" Orientation="Horizontal">
-                <TextBlock Text="Docket #" VerticalAlignment="Center" MinWidth="80" Margin="20,0,10,0"/>
-                <TextBox MinWidth="100" Text="{Binding Path=JobNumber}"/>
-            </StackPanel>
-            <StackPanel Margin="10, 10, 10, 0" Orientation="Horizontal">
-                <TextBlock Text="Product Part" VerticalAlignment="Center" MinWidth="80" Margin="20,0,10,0"/>
-                <ComboBox ItemsSource="{Binding Path=ProductParts}" SelectedValue="{Binding Path=ProductPartName, Mode=TwoWay}" MinWidth="100"/>
-            </StackPanel>
-            <StackPanel>
-                    <ListView Margin="10" x:Name="MyListBox"
-                          MaxHeight="550"                          
-                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                     ItemsSource="{Binding Path=ObservableLayout.LayoutItems, Mode=TwoWay}"
-                     ItemTemplate="{StaticResource LayoutChoicesTemplate}" Focusable="False">                        
-                        
-                    </ListView>
-            </StackPanel>
 
-            <Button Command="{Binding Path=GetOptionalsCommand}">
-                Add optional layout items
-            </Button>
-            <Button Command="{Binding Path=GetLayoutCommand}">
-                Get Layout
-            </Button>
-            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
-                <TextBlock Text="Layout to retrieve" Margin="0,0,10,0"/>
-                <TextBlock Name="LayoutString" Text="{Binding LayoutString, Mode=TwoWay}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
-                <TextBlock Text="File Name" Margin="0,0,10,0"/>
-                <TextBlock Name="FileName" Text="{Binding FileName, Mode=TwoWay}"/>
-            </StackPanel>
-        </StackPanel>
-        </Grid>
-    </DockPanel>
+        
+
+    </StackPanel>
 </Controls:MetroWindow>
