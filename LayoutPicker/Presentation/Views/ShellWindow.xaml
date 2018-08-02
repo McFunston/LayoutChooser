@@ -25,7 +25,7 @@
         
     </Window.Resources>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" ClipToBounds="True">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
 
 
 
@@ -33,7 +33,7 @@
         <Controls:HamburgerMenu x:Name="HamburgerMenuControl"
                         
                         IsPaneOpen="False"
-                        DisplayMode="CompactInline" HorizontalAlignment="Left" ClipToBounds="True">
+                        DisplayMode="CompactOverlay" HorizontalAlignment="Left" ClipToBounds="True">
             <StackPanel Background="#FFEFEFF1">
                 <Image x:Name="Logo" Source="/LayoutPicker;component/Presentation/Resources/Images/logo.png" Width="200" Margin="10,20,10,10" >
 

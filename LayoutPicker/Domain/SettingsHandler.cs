@@ -11,6 +11,7 @@ namespace LayoutPicker.Domain
 
     public class SettingsHandler
     {
+        string layoutOptionsLocation = "..\\..\\Settings\\LayoutOptions.json";
         //static readonly SettingsHandler _instance = new SettingsHandler();
         //public static SettingsHandler Instance
         //{
@@ -32,7 +33,16 @@ namespace LayoutPicker.Domain
         {
             if (LayoutOptions == null)
             {
-                LayoutOptions = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText("..\\..\\Settings\\LayoutOptions.json"));
+                try
+                {
+                    LayoutOptions = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, List<string>>>>(File.ReadAllText(layoutOptionsLocation));
+                }
+                catch (IOException e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                } 
+               
             }            
         }
     }
