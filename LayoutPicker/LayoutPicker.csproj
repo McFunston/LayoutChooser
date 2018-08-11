@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Layout.cs" />
+    <Compile Include="Domain\LayoutCopier.cs" />
     <Compile Include="Domain\LayoutFactory.cs" />
     <Compile Include="Domain\LayoutItem.cs" />
     <Compile Include="Domain\SettingsHandler.cs" />

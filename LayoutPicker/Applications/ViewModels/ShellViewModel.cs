@@ -98,11 +98,14 @@ namespace LayoutPicker.Applications.ViewModels
         public ICommand GetOptionalsCommand { get { return getOptionalsCommand; } }
         public void GetLayout()
         {
+            LayoutString = "";
             foreach (var sv in ObservableLayout.LayoutItems)
             {
                 LayoutString = LayoutString + sv.CurrentValue;
             }
             FileName = JobNumber + "-" + ProductPartName;
+            LayoutCopier layoutCopier = new LayoutCopier();
+            layoutCopier.CopyLayout(LayoutString, FileName);
             //LayoutString = "Got One";
             
         }
