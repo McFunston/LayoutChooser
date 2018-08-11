@@ -6,7 +6,8 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:vm="clr-namespace:LayoutPicker.Applications.ViewModels"
         mc:Ignorable="d" Title="{Binding Title}" Icon="{StaticResource ApplicationIcon}" 
-                      MinHeight="850"
+                      MinHeight="800"
+                      Width="340"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance vm:ShellViewModel}">
@@ -62,14 +63,10 @@
                 <Button Command="{Binding Path=GetLayoutCommand}">
                     Get Layout
                 </Button>
-                <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
-                    <TextBlock Text="Layout to retrieve" Margin="0,0,10,0"/>
+                <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">                    
                     <TextBlock Name="LayoutString" Text="{Binding LayoutString, Mode=TwoWay}"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10, 10, 10, 0">
-                    <TextBlock Text="File Name" Margin="0,0,10,0"/>
-                    <TextBlock Name="FileName" Text="{Binding FileName, Mode=TwoWay}"/>
-                </StackPanel>
+                
             </StackPanel>
 
         </Controls:HamburgerMenu>

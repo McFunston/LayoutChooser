@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
+using System.IO;
 using System.Waf.Applications;
 using System.Windows.Input;
 using LayoutPicker.Applications.Views;
@@ -50,7 +51,7 @@ namespace LayoutPicker.Applications.ViewModels
             get { return jobNumber; }
             set { jobNumber = value; RaisePropertyChanged(); }
         }
-
+        
         private Layout observableLayout;
 
         public Layout ObservableLayout
@@ -104,8 +105,19 @@ namespace LayoutPicker.Applications.ViewModels
                 LayoutString = LayoutString + sv.CurrentValue;
             }
             FileName = JobNumber + "-" + ProductPartName;
-            LayoutCopier layoutCopier = new LayoutCopier();
-            layoutCopier.CopyLayout(LayoutString, FileName);
+
+            try
+            {
+                LayoutCopier layoutCopier = new LayoutCopier();
+                layoutCopier.CopyLayout(LayoutString, FileName);
+                LayoutString = "Great Success!";
+            }
+
+            catch(DirectoryNotFoundException)
+            {
+                LayoutString = ("Not Found!");
+            }
+
             //LayoutString = "Got One";
             
         }
