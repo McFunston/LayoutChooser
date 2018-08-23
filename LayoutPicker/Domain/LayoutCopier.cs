@@ -9,8 +9,8 @@ namespace LayoutPicker.Domain
 {
     class LayoutCopier
     {
-        string sourcePath = "G:\\TestData\\Static Impos";
-        string destinationPath = "G:\\TestData\\Impositions";
+        string sourcePath = "z:\\AUTO-Impositions\\STL";
+        string destinationPath = "Z:\\Impositions";
 
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
