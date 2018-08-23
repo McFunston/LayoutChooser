@@ -247,31 +247,31 @@
       "_.7500"
     ],
     "Pages": [
-      "4pg",
-      "6pg"
+      "_4pg",
+      "_6pg"
     ],
     "# Up": [
-      "2up",
-      "3up",
-      "4up"
+      "_2up",
+      "_3up",
+      "_4up"
     ],
     "Press": [
-      "CD",
-      "40",
-      "XL"
+      "_CD",
+      "_40",
+      "_XL"
     ],
     "# of Colour Bar": [
-      "4c",
-      "6c"
+      "_5c",
+      "_6c"
     ],
     "Sheet Work": [
-      "SW",
-      "WT",
-      "TU",
-      "PF"
+      "_SW",
+      "_WT",
+      "_TU",
+      "_PF"
     ],
     "Sheet Size With Grain": [
-      "25.00x38.00"
+      "_25.00x38.00"
     ]
   }
 }
