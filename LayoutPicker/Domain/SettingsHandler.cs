@@ -45,5 +45,14 @@ namespace LayoutPicker.Domain
                
             }            
         }
+        public string GetLibraryPath(string productPartName)
+        {
+            string productPartPath;
+            this.GetLayoutOptions();
+            LayoutOptions.TryGetValue(productPartName, out var product);
+            product.TryGetValue("Location", out var location);
+            productPartPath = location[0];
+            return productPartPath;
+        }
     }
 }

@@ -9,6 +9,10 @@ namespace LayoutPicker.Domain
 {
     class LayoutCopier
     {
+        public LayoutCopier(string desPath)
+        {
+            destinationPath = desPath;
+        }
         string sourcePath = "z:\\AUTO-Impositions\\STL";
         string destinationPath = "Z:\\Impositions";
 

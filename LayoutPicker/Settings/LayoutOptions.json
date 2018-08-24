@@ -185,6 +185,9 @@
       "24",
       "30",
       "32"
+    ],
+    "Location": [
+      "z:\\AUTO-Impositions\\STL"
     ]
   },
   "Cover": {
@@ -272,6 +275,9 @@
     ],
     "Sheet Size With Grain": [
       "_25.00x38.00"
+    ],
+    "Location": [
+      "z:\\AUTO-Impositions\\HC"
     ]
   }
 }

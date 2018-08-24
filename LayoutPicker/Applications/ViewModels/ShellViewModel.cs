@@ -99,6 +99,7 @@ namespace LayoutPicker.Applications.ViewModels
         public ICommand GetOptionalsCommand { get { return getOptionalsCommand; } }
         public void GetLayout()
         {
+            string path = settingsHandler.GetLibraryPath(ProductPartName);
             LayoutString = "";
             foreach (var sv in ObservableLayout.LayoutItems)
             {
@@ -108,7 +109,7 @@ namespace LayoutPicker.Applications.ViewModels
 
             try
             {
-                LayoutCopier layoutCopier = new LayoutCopier();
+                LayoutCopier layoutCopier = new LayoutCopier(path);
                 layoutCopier.CopyLayout(LayoutString, FileName);
                 LayoutString = "Great Success!";
             }
